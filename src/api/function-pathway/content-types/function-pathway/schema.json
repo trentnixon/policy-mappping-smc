@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "function_pathways",
+  "info": {
+    "singularName": "function-pathway",
+    "pluralName": "function-pathways",
+    "displayName": "function-pathway"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "description": {
+      "type": "text"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "state_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-oversight.state-oversight",
+      "mappedBy": "function_pathways"
+    },
+    "national_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::national-oversight.national-oversight",
+      "mappedBy": "function_pathways"
+    }
+  }
+}

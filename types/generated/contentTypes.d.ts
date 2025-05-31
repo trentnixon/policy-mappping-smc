@@ -373,6 +373,294 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCommitteeProgramCommitteeProgram
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'committee_programs';
+  info: {
+    displayName: 'committee-program';
+    pluralName: 'committee-programs';
+    singularName: 'committee-program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::committee-program.committee-program'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    sortOrder: Schema.Attribute.Integer;
+    state_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::state-oversight.state-oversight'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFunctionPathwayFunctionPathway
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'function_pathways';
+  info: {
+    displayName: 'function-pathway';
+    pluralName: 'function-pathways';
+    singularName: 'function-pathway';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::function-pathway.function-pathway'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    national_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::national-oversight.national-oversight'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    sortOrder: Schema.Attribute.Integer;
+    state_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::state-oversight.state-oversight'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNationalOversightNationalOversight
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'national_oversights';
+  info: {
+    displayName: 'national-oversight';
+    pluralName: 'national-oversights';
+    singularName: 'national-oversight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    function_pathways: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::function-pathway.function-pathway'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::national-oversight.national-oversight'
+    > &
+      Schema.Attribute.Private;
+    oversight_bodies: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::oversight-body.oversight-body'
+    >;
+    policy_guidelines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::policy-guideline.policy-guideline'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOversightBodyOversightBody
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'oversight_bodies';
+  info: {
+    displayName: 'oversight-body';
+    pluralName: 'oversight-bodies';
+    singularName: 'oversight-body';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::oversight-body.oversight-body'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    national_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::national-oversight.national-oversight'
+    >;
+    oversight_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::oversight-category.oversight-category'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    state_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::state-oversight.state-oversight'
+    >;
+    state_territory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::state-territory.state-territory'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOversightCategoryOversightCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'oversight_categories';
+  info: {
+    displayName: 'oversight-category';
+    pluralName: 'oversight-categories';
+    singularName: 'oversight-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::oversight-category.oversight-category'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    oversight_bodies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::oversight-body.oversight-body'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    sortOrder: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPolicyGuidelinePolicyGuideline
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'policy_guidelines';
+  info: {
+    displayName: 'policy-guideline';
+    pluralName: 'policy-guidelines';
+    singularName: 'policy-guideline';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    details: Schema.Attribute.Text;
+    effectiveDate: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::policy-guideline.policy-guideline'
+    > &
+      Schema.Attribute.Private;
+    national_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::national-oversight.national-oversight'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    sortOrder: Schema.Attribute.Integer;
+    state_oversights: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::state-oversight.state-oversight'
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStateOversightStateOversight
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'state_oversights';
+  info: {
+    description: '';
+    displayName: 'state-oversight';
+    pluralName: 'state-oversights';
+    singularName: 'state-oversight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    committee_programs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::committee-program.committee-program'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    function_pathways: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::function-pathway.function-pathway'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::state-oversight.state-oversight'
+    > &
+      Schema.Attribute.Private;
+    oversight_bodies: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::oversight-body.oversight-body'
+    >;
+    policy_guidelines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::policy-guideline.policy-guideline'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    state_territory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::state-territory.state-territory'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStateTerritoryStateTerritory
   extends Struct.CollectionTypeSchema {
   collectionName: 'state_territories';
@@ -396,9 +684,17 @@ export interface ApiStateTerritoryStateTerritory
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    oversight_bodies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::oversight-body.oversight-body'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     regionType: Schema.Attribute.Enumeration<['State', 'Territory']>;
     slug: Schema.Attribute.UID<'name'>;
+    state_oversights: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::state-oversight.state-oversight'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -914,6 +1210,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::committee-program.committee-program': ApiCommitteeProgramCommitteeProgram;
+      'api::function-pathway.function-pathway': ApiFunctionPathwayFunctionPathway;
+      'api::national-oversight.national-oversight': ApiNationalOversightNationalOversight;
+      'api::oversight-body.oversight-body': ApiOversightBodyOversightBody;
+      'api::oversight-category.oversight-category': ApiOversightCategoryOversightCategory;
+      'api::policy-guideline.policy-guideline': ApiPolicyGuidelinePolicyGuideline;
+      'api::state-oversight.state-oversight': ApiStateOversightStateOversight;
       'api::state-territory.state-territory': ApiStateTerritoryStateTerritory;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

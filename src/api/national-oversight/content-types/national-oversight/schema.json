@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "national_oversights",
+  "info": {
+    "singularName": "national-oversight",
+    "pluralName": "national-oversights",
+    "displayName": "national-oversight"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::oversight-body.oversight-body",
+      "inversedBy": "national_oversights"
+    },
+    "function_pathways": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::function-pathway.function-pathway",
+      "inversedBy": "national_oversights"
+    },
+    "policy_guidelines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::policy-guideline.policy-guideline",
+      "inversedBy": "national_oversights"
+    }
+  }
+}

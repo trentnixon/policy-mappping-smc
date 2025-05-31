@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "oversight_categories",
+  "info": {
+    "singularName": "oversight-category",
+    "pluralName": "oversight-categories",
+    "displayName": "oversight-category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::oversight-body.oversight-body",
+      "mappedBy": "oversight_category"
+    }
+  }
+}

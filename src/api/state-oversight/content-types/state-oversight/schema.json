@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "state_oversights",
+  "info": {
+    "singularName": "state-oversight",
+    "pluralName": "state-oversights",
+    "displayName": "state-oversight",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "state_territory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::state-territory.state-territory",
+      "inversedBy": "state_oversights"
+    },
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::oversight-body.oversight-body",
+      "inversedBy": "state_oversights"
+    },
+    "committee_programs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::committee-program.committee-program",
+      "inversedBy": "state_oversights"
+    },
+    "function_pathways": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::function-pathway.function-pathway",
+      "inversedBy": "state_oversights"
+    },
+    "policy_guidelines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::policy-guideline.policy-guideline",
+      "inversedBy": "state_oversights"
+    }
+  }
+}

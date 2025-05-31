@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "oversight_bodies",
+  "info": {
+    "singularName": "oversight-body",
+    "pluralName": "oversight-bodies",
+    "displayName": "oversight-body"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "state_territory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::state-territory.state-territory",
+      "inversedBy": "oversight_bodies"
+    },
+    "oversight_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::oversight-category.oversight-category",
+      "inversedBy": "oversight_bodies"
+    },
+    "state_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-oversight.state-oversight",
+      "mappedBy": "oversight_bodies"
+    },
+    "national_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::national-oversight.national-oversight",
+      "mappedBy": "oversight_bodies"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "policy_guidelines",
+  "info": {
+    "singularName": "policy-guideline",
+    "pluralName": "policy-guidelines",
+    "displayName": "policy-guideline"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "effectiveDate": {
+      "type": "date"
+    },
+    "details": {
+      "type": "text"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "state_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-oversight.state-oversight",
+      "mappedBy": "policy_guidelines"
+    },
+    "national_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::national-oversight.national-oversight",
+      "mappedBy": "policy_guidelines"
+    }
+  }
+}

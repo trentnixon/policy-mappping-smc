@@ -26,6 +26,18 @@
         "State",
         "Territory"
       ]
+    },
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::oversight-body.oversight-body",
+      "mappedBy": "state_territory"
+    },
+    "state_oversights": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::state-oversight.state-oversight",
+      "mappedBy": "state_territory"
     }
   }
 }

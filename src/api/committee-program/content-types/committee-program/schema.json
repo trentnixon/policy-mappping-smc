@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "committee_programs",
+  "info": {
+    "singularName": "committee-program",
+    "pluralName": "committee-programs",
+    "displayName": "committee-program"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "description": {
+      "type": "text"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "state_oversights": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-oversight.state-oversight",
+      "mappedBy": "committee_programs"
+    }
+  }
+}
