@@ -37,6 +37,12 @@
       "relation": "manyToMany",
       "target": "api::national-oversight.national-oversight",
       "mappedBy": "policy_guidelines"
+    },
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::oversight-body.oversight-body",
+      "mappedBy": "policy_guidelines"
     }
   }
 }

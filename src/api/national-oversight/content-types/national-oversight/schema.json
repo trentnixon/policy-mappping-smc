@@ -4,17 +4,18 @@
   "info": {
     "singularName": "national-oversight",
     "pluralName": "national-oversights",
-    "displayName": "national-oversight"
+    "displayName": "national-oversight",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "oversight_bodies": {
+    "oversight_body": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToOne",
       "target": "api::oversight-body.oversight-body",
-      "inversedBy": "national_oversights"
+      "inversedBy": "national_oversight"
     },
     "function_pathways": {
       "type": "relation",

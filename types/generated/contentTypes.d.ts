@@ -436,6 +436,10 @@ export interface ApiFunctionPathwayFunctionPathway
       'manyToMany',
       'api::national-oversight.national-oversight'
     >;
+    oversight_bodies: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::oversight-body.oversight-body'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     sortOrder: Schema.Attribute.Integer;
@@ -453,6 +457,7 @@ export interface ApiNationalOversightNationalOversight
   extends Struct.CollectionTypeSchema {
   collectionName: 'national_oversights';
   info: {
+    description: '';
     displayName: 'national-oversight';
     pluralName: 'national-oversights';
     singularName: 'national-oversight';
@@ -474,8 +479,8 @@ export interface ApiNationalOversightNationalOversight
       'api::national-oversight.national-oversight'
     > &
       Schema.Attribute.Private;
-    oversight_bodies: Schema.Attribute.Relation<
-      'manyToMany',
+    oversight_body: Schema.Attribute.Relation<
+      'oneToOne',
       'api::oversight-body.oversight-body'
     >;
     policy_guidelines: Schema.Attribute.Relation<
@@ -493,6 +498,7 @@ export interface ApiOversightBodyOversightBody
   extends Struct.CollectionTypeSchema {
   collectionName: 'oversight_bodies';
   info: {
+    description: '';
     displayName: 'oversight-body';
     pluralName: 'oversight-bodies';
     singularName: 'oversight-body';
@@ -504,6 +510,10 @@ export interface ApiOversightBodyOversightBody
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    function_pathways: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::function-pathway.function-pathway'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -511,13 +521,17 @@ export interface ApiOversightBodyOversightBody
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    national_oversights: Schema.Attribute.Relation<
-      'manyToMany',
+    national_oversight: Schema.Attribute.Relation<
+      'oneToOne',
       'api::national-oversight.national-oversight'
     >;
     oversight_category: Schema.Attribute.Relation<
       'manyToOne',
       'api::oversight-category.oversight-category'
+    >;
+    policy_guidelines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::policy-guideline.policy-guideline'
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
@@ -597,6 +611,10 @@ export interface ApiPolicyGuidelinePolicyGuideline
     national_oversights: Schema.Attribute.Relation<
       'manyToMany',
       'api::national-oversight.national-oversight'
+    >;
+    oversight_bodies: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::oversight-body.oversight-body'
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;

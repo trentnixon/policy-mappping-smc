@@ -34,6 +34,12 @@
       "relation": "manyToMany",
       "target": "api::national-oversight.national-oversight",
       "mappedBy": "function_pathways"
+    },
+    "oversight_bodies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::oversight-body.oversight-body",
+      "mappedBy": "function_pathways"
     }
   }
 }

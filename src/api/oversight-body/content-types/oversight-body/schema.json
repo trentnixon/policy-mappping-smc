@@ -4,7 +4,8 @@
   "info": {
     "singularName": "oversight-body",
     "pluralName": "oversight-bodies",
-    "displayName": "oversight-body"
+    "displayName": "oversight-body",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -35,11 +36,23 @@
       "target": "api::state-oversight.state-oversight",
       "mappedBy": "oversight_bodies"
     },
-    "national_oversights": {
+    "national_oversight": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::national-oversight.national-oversight",
+      "mappedBy": "oversight_body"
+    },
+    "policy_guidelines": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::national-oversight.national-oversight",
-      "mappedBy": "oversight_bodies"
+      "target": "api::policy-guideline.policy-guideline",
+      "inversedBy": "oversight_bodies"
+    },
+    "function_pathways": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::function-pathway.function-pathway",
+      "inversedBy": "oversight_bodies"
     }
   }
 }
